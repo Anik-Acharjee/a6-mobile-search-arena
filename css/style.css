@@ -1,0 +1,15 @@
+@media only screen and (max-width: 688px) {
+  .img {
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+#spinner {
+  display: none;
+}
+/* #result {
+  display: none;
+} */
