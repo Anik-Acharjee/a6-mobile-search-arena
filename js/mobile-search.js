@@ -1,7 +1,3 @@
-// function home() {
-//   window.location.href = "index.html";
-// }
-
 // Spinner
 
 const toggleSpinner = (spinner) => {
@@ -12,6 +8,7 @@ const toggleSpinner = (spinner) => {
 const result = document.getElementById("result");
 const noResult = document.getElementById("no-result");
 
+// search option
 const searchButton = () => {
   const searchField = document.getElementById("search-field");
   toggleSpinner("block");
@@ -23,16 +20,14 @@ const searchButton = () => {
     .then((res) => res.json())
     .then((data) => displayMobile(data.data));
 
-  if (searchText === "") {
-    console.log("plz type something");
-    result.innerText = "Please type something";
-    result.style.display = "block";
-  } else if (searchText === 0) {
-    console.log(" kichu ");
-  } else {
-    console.log("thanks for typing");
-    result.textContent = "";
-  }
+  // if (searchText === "") {
+  //   console.log("plz type something");
+  //   result.innerText = "Please type something";
+  //   result.style.display = "block";
+  // } else {
+  //   console.log("thanks for typing");
+  //   result.textContent = "";
+  // }
 };
 
 const displayMobile = (mobiles) => {
@@ -44,8 +39,9 @@ const displayMobile = (mobiles) => {
   if (mobiles.length === 0) {
     console.log("No result found");
     noResult.innerText = "No result found";
+    noResult.style.display = "block";
   } else {
-    console.log("ok");
+    // console.log("ok");
     for (const mobile of mobiles) {
       // console.log(mobile);
       const div = document.createElement("div");
