@@ -18,17 +18,10 @@ const searchButton = () => {
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayMobile(data.data));
-
-  // if (searchText === "") {
-  //   console.log("plz type something");
-  //   result.innerText = "Please type something";
-  //   result.style.display = "block";
-  // } else {
-  //   console.log("thanks for typing");
-  //   result.textContent = "";
-  // }
+    .then((data) => displayMobile(data.data.slice(0, 20)));
 };
+
+// Display Option
 
 const displayMobile = (mobiles) => {
   // console.log(mobiles);
