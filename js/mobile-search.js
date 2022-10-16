@@ -1,30 +1,38 @@
-function home() {
-  window.location.href = "index.html";
-}
+// function home() {
+//   window.location.href = "index.html";
+// }
+
+// Spinner
 
 const toggleSpinner = (spinner) => {
   document.getElementById("spinner").style.display = spinner;
 };
 
 //error check
+const result = document.getElementById("result");
+const noResult = document.getElementById("no-result");
 
 const searchButton = () => {
   const searchField = document.getElementById("search-field");
-  const error = document.getElementById("result");
   toggleSpinner("block");
-
   const searchText = searchField.value;
   searchField.value = "";
-  // console.log(searchText);
-
-  // if (isNaN(searchText)) {
-  //   error.innerText = "error";
-  // }
 
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayMobile(data.data));
+
+  if (searchText === "") {
+    console.log("plz type something");
+    result.innerText = "Please type something";
+    result.style.display = "block";
+  } else if (searchText === 0) {
+    console.log(" kichu ");
+  } else {
+    console.log("thanks for typing");
+    result.textContent = "";
+  }
 };
 
 const displayMobile = (mobiles) => {
@@ -32,11 +40,17 @@ const displayMobile = (mobiles) => {
 
   const searchResult = document.getElementById("display-result");
   searchResult.textContent = "";
-  for (const mobile of mobiles) {
-    // console.log(mobile);
-    const div = document.createElement("div");
-    div.classList.add("col");
-    div.innerHTML = `
+
+  if (mobiles.length === 0) {
+    console.log("No result found");
+    noResult.innerText = "No result found";
+  } else {
+    console.log("ok");
+    for (const mobile of mobiles) {
+      // console.log(mobile);
+      const div = document.createElement("div");
+      div.classList.add("col");
+      div.innerHTML = `
 
   <div class="col">
     <div class="card">
@@ -49,12 +63,15 @@ const displayMobile = (mobiles) => {
     </div>
   </div>
   `;
-    searchResult.appendChild(div);
+      searchResult.appendChild(div);
+    }
+    noResult.textContent = "";
   }
+
   toggleSpinner("none");
 };
 
-const element = ["${mobile.image}", "${mobile.phone_name}", "${mobile.brand}"];
+// const element = ["${mobile.image}", "${mobile.phone_name}", "${mobile.brand}"];
 // console.log(element.slice(0, 20));
 
 // single Mobile Details
@@ -98,4 +115,3 @@ const SingleMobileDetail = (moreDetail) => {
 
   displayDetail.appendChild(div);
 };
-// Search With ID
