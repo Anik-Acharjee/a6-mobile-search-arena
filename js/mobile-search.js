@@ -14,16 +14,20 @@ const searchButton = () => {
   toggleSpinner("block");
   const searchText = searchField.value;
   searchField.value = "";
+  const moreDetails = document.getElementById("more-details");
+  moreDetails.textContent = "";
 
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayMobile(data.data.slice(0, 20)));
+
   // searchText.textContent = "";
 };
+// console.log(displayMobile);
 
 const displayMobile = (mobiles) => {
-  // console.log(mobiles);
+  console.log(mobiles);
   const searchResult = document.getElementById("display-result");
 
   searchResult.textContent = "";
@@ -66,7 +70,7 @@ const displayMobile = (mobiles) => {
 
 const singleMobileInfo = (Detail) => {
   // console.log(Detail);
-  // displayDetail.textContent = "";
+  //
 
   const url = `https://openapi.programming-hero.com/api/phone/${Detail}`;
   fetch(url)
@@ -80,6 +84,9 @@ const SingleMobileDetail = (moreDetail) => {
   displayDetail.textContent = "";
   const div = document.createElement("div");
   div.classList.add("card");
+  // div.classList.add("mobile-details");
+  // div.setAttribute("id", "mobile-details");
+
   div.innerHTML = `
   <div class="">
   <div class="row">
