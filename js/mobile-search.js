@@ -21,10 +21,7 @@ const searchButton = () => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayMobile(data.data.slice(0, 20)));
-
-  // searchText.textContent = "";
 };
-// console.log(displayMobile);
 
 const displayMobile = (mobiles) => {
   console.log(mobiles);
@@ -63,14 +60,10 @@ const displayMobile = (mobiles) => {
   toggleSpinner("none");
 };
 
-// const element = ["${mobile.image}", "${mobile.phone_name}", "${mobile.brand}"];
-// console.log(element.slice(0, 20));
-
 // single Mobile Details
 
 const singleMobileInfo = (Detail) => {
   // console.log(Detail);
-  //
 
   const url = `https://openapi.programming-hero.com/api/phone/${Detail}`;
   fetch(url)
@@ -84,9 +77,6 @@ const SingleMobileDetail = (moreDetail) => {
   displayDetail.textContent = "";
   const div = document.createElement("div");
   div.classList.add("card");
-  // div.classList.add("mobile-details");
-  // div.setAttribute("id", "mobile-details");
-
   div.innerHTML = `
   <div class="">
   <div class="row">
